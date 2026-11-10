@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bluewave Pressure Washing | Clean exteriors, done right</title>
+<meta name="description" content="Pressure washing and soft washing for homes and small businesses: driveways, house exteriors, patios, fences and roofs. Request a quote in under a minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f4f9f8;
+    --card: #ffffff;
+    --ink: #0d2430;
+    --muted: #557078;
+    --line: #d8e6e4;
+    --teal: #0c8a86;
+    --teal-dark: #086a67;
+    --aqua: #dff3f1;
+    --error: #c0392b;
+    --head: "Sora", system-ui, sans-serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1100px, 100% - 40px); margin-inline: auto; }
+  h1, h2, h3 { font-family: var(--head); line-height: 1.15; margin: 0; letter-spacing: -0.01em; }
+  h1 { font-size: clamp(2.3rem, 5.6vw, 3.9rem); font-weight: 700; }
+  h2 { font-size: clamp(1.7rem, 3.4vw, 2.4rem); font-weight: 600; }
+  h3 { font-size: 1.25rem; font-weight: 600; }
+  p { margin: 0; }
+  .eyebrow { font-size: 0.78rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+  .lede { color: var(--muted); font-size: 1.08rem; max-width: 56ch; }
+
+  header { position: sticky; top: 0; z-index: 20; background: rgba(244, 249, 248, 0.92); backdrop-filter: blur(10px); border-bottom: 1px solid var(--line); }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 66px; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 10px; font-family: var(--head); font-weight: 700; font-size: 1.15rem; }
+  .brand svg { width: 30px; height: 30px; }
+  nav { display: flex; align-items: center; gap: 26px; font-size: 0.92rem; color: var(--muted); }
+  nav a:hover { color: var(--ink); }
+  .btn { display: inline-flex; align-items: center; justify-content: center; padding: 14px 26px; border-radius: 999px; cursor: pointer; font: 600 0.95rem/1 var(--sans); background: var(--teal); color: #fff; border: 1px solid var(--teal); transition: background 0.2s, border-color 0.2s; }
+  .btn:hover { background: var(--teal-dark); border-color: var(--teal-dark); }
+  .btn.ghost { background: transparent; color: var(--ink); border-color: #aac3c0; }
+  .btn.ghost:hover { border-color: var(--teal); color: var(--teal); background: transparent; }
+  nav .btn { padding: 10px 18px; color: #fff; }
+  @media (max-width: 760px) { nav a:not(.btn) { display: none; } }
+
+  .hero { padding: clamp(56px, 9vw, 110px) 0 clamp(48px, 7vw, 84px); background: radial-gradient(800px 380px at 88% 0%, #cdeeea, transparent 65%); }
+  .hero h1 span { color: var(--teal); }
+  .hero .lede { margin-top: 20px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+  .facts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: clamp(40px, 6vw, 64px); }
+  .facts div { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px; }
+  .facts strong { display: block; font-family: var(--head); font-size: 1.15rem; }
+  .facts span { color: var(--muted); font-size: 0.92rem; }
+  @media (max-width: 680px) { .facts { grid-template-columns: 1fr; } }
+
+  section { padding: clamp(56px, 8vw, 96px) 0; }
+  .head { display: grid; gap: 14px; margin-bottom: clamp(30px, 4.5vw, 48px); }
+  .alt { background: var(--card); border-block: 1px solid var(--line); }
+
+  .packages { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px 26px; display: flex; flex-direction: column; gap: 12px; transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s; }
+  .card:hover { border-color: var(--teal); transform: translateY(-3px); box-shadow: 0 14px 30px rgba(12, 138, 134, 0.12); }
+  .card .tag { align-self: flex-start; background: var(--aqua); color: var(--teal-dark); font-size: 0.76rem; font-weight: 600; padding: 5px 10px; border-radius: 999px; }
+  .card p { color: var(--muted); font-size: 0.96rem; }
+  .card ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 8px; font-size: 0.93rem; }
+  .card li { padding-left: 24px; position: relative; }
+  .card li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+  .card a { margin-top: auto; padding-top: 14px; color: var(--teal); font-weight: 600; font-size: 0.93rem; }
+  @media (max-width: 900px) { .packages { grid-template-columns: 1fr; } }
+
+  .extras { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .extras span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 8px 14px; font-size: 0.9rem; color: var(--muted); }
+
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; counter-reset: step; }
+  .steps div { counter-increment: step; background: var(--bg); border: 1px solid var(--line); border-radius: 14px; padding: 22px; }
+  .steps div::before { content: counter(step); display: grid; place-items: center; width: 36px; height: 36px; border-radius: 50%; background: var(--teal); color: #fff; font-family: var(--head); font-weight: 600; margin-bottom: 14px; }
+  .steps h3 { font-size: 1.08rem; margin-bottom: 6px; }
+  .steps p { color: var(--muted); font-size: 0.93rem; }
+  @media (max-width: 860px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+
+  .quote { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(28px, 5vw, 64px); align-items: start; }
+  .quote aside { display: grid; gap: 18px; }
+  .assure { list-style: none; padding: 0; margin: 6px 0 0; display: grid; gap: 12px; font-size: 0.96rem; color: var(--muted); }
+  .assure li { padding-left: 26px; position: relative; }
+  .assure li::before { content: "✓"; position: absolute; left: 0; color: var(--teal); font-weight: 700; }
+  .assure b { color: var(--ink); font-weight: 600; }
+  form, .done { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: clamp(22px, 3.6vw, 36px); box-shadow: 0 18px 40px rgba(13, 36, 48, 0.06); }
+  fieldset { border: 0; padding: 0; margin: 0 0 24px; }
+  legend { padding: 0; margin-bottom: 12px; font-size: 0.78rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--teal); font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+  .full { grid-column: 1 / -1; }
+  label { display: grid; gap: 6px; font-size: 0.88rem; color: var(--muted); }
+  input, select, textarea { width: 100%; padding: 12px 13px; background: #fff; color: var(--ink); border: 1px solid #bfd3d0; border-radius: 10px; font: 400 1rem var(--sans); }
+  textarea { min-height: 90px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--teal); box-shadow: 0 0 0 3px rgba(12, 138, 134, 0.18); }
+  .bad input, .bad select { border-color: var(--error); }
+  .msg { color: var(--error); font-size: 0.8rem; min-height: 1em; }
+  form .btn { width: 100%; padding: 16px; font-size: 1rem; }
+  .small { color: var(--muted); font-size: 0.84rem; margin-top: 12px; text-align: center; }
+  .done h3 { color: var(--teal); margin-bottom: 8px; }
+  .done dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; margin: 20px 0; font-size: 0.95rem; }
+  .done dt { color: var(--muted); }
+  .done dd { margin: 0; overflow-wrap: anywhere; }
+  [hidden] { display: none !important; }
+  @media (max-width: 900px) { .quote { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); padding: 30px 0; color: var(--muted); font-size: 0.88rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+  footer a:hover { color: var(--teal); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Bluewave Pressure Washing home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="15" fill="#0c8a86"/><path d="M6 19c3-4 6-4 9 0s6 4 11-1" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round"/><path d="M8 13c3-3.500 5.500-3.500 8 0" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" opacity=".7"/></svg>
+      Bluewave
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a class="btn" href="#quote">Get a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <div class="wrap">
+      <p class="eyebrow">Pressure washing &amp; soft washing</p>
+      <h1 style="margin-top:16px">Clean exteriors,<br><span>done the right way.</span></h1>
+      <p class="lede">We wash homes, driveways, patios and fences with the right pressure for each surface, so the dirt comes off and the material stays intact.</p>
+      <div class="cta">
+        <a class="btn" href="#quote">Request a quote</a>
+        <a class="btn ghost" href="#services">See services</a>
+      </div>
+      <div class="facts">
+        <div><strong>Right method per surface</strong><span>Soft wash for siding and roofs, pressure for concrete</span></div>
+        <div><strong>Clear quotes</strong><span>Priced by size and surface before we start</span></div>
+        <div><strong>You don't need to be home</strong><span>We bring our own water and equipment</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Services</p>
+        <h2>Pick the job that needs doing</h2>
+        <p class="lede">Every job is priced by the size and condition of the surface. Tell us what needs washing and we will send an exact quote.</p>
+      </div>
+      <div class="packages">
+        <article class="card">
+          <span class="tag">Curb appeal</span>
+          <h3>Driveway &amp; walkways</h3>
+          <p>Oil, algae and years of grime lifted from concrete, pavers and brick.</p>
+          <ul>
+            <li>Hot or cold pressure wash</li>
+            <li>Pre-treatment for stains</li>
+            <li>Edges and expansion joints cleaned</li>
+          </ul>
+          <a href="#quote" data-service="Driveway and walkways">Quote this service →</a>
+        </article>
+        <article class="card">
+          <span class="tag">Most popular</span>
+          <h3>House soft wash</h3>
+          <p>A low-pressure wash that removes mildew and algae from siding without damaging it.</p>
+          <ul>
+            <li>Safe for vinyl, brick, stucco and painted siding</li>
+            <li>Windows, trim and doors rinsed</li>
+            <li>Plants and landscaping protected</li>
+          </ul>
+          <a href="#quote" data-service="House soft wash">Quote this service →</a>
+        </article>
+        <article class="card">
+          <span class="tag">Everything</span>
+          <h3>Full exterior</h3>
+          <p>House, driveway and outdoor living areas cleaned in a single visit.</p>
+          <ul>
+            <li>Everything in the two services above</li>
+            <li>Patio, porch and pool deck</li>
+            <li>Fence and gate wash</li>
+          </ul>
+          <a href="#quote" data-service="Full exterior">Quote this service →</a>
+        </article>
+      </div>
+      <div class="extras" aria-label="Add-ons">
+        <span>Roof soft wash</span><span>Gutter brightening</span><span>Window cleaning</span><span>Solar panel cleaning</span><span>Deck and fence sealing</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">How it works</p>
+        <h2>From request to rinse in four steps</h2>
+      </div>
+      <div class="steps">
+        <div><h3>Send your details</h3><p>Tell us the property, what needs washing and your preferred date.</p></div>
+        <div><h3>Get your quote</h3><p>We reply with an exact price and the days we have open.</p></div>
+        <div><h3>We do the work</h3><p>We arrive with water and equipment. You do not need to be home.</p></div>
+        <div><h3>Walk-around and pay</h3><p>Check the result with us, then pay by card, Zelle or cash.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="quote">
+    <div class="wrap quote">
+      <aside>
+        <p class="eyebrow">Get a quote</p>
+        <h2>Tell us what needs washing</h2>
+        <p class="lede">We will reply with an exact price and available days. No payment is taken at this stage.</p>
+        <ul class="assure">
+          <li><b>Same-day replies</b> during business hours</li>
+          <li><b>No surprises:</b> the quoted price is the price</li>
+          <li><b>Free rescheduling</b> for rain</li>
+        </ul>
+      </aside>
+
+      <div>
+        <form id="quote-form" novalidate>
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="grid">
+              <label>Full name<input name="name" autocomplete="name" required><span class="msg"></span></label>
+              <label>Phone<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required><span class="msg"></span></label>
+              <label class="full">Email<input name="email" type="email" autocomplete="email" required><span class="msg"></span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Your property</legend>
+            <div class="grid">
+              <label>Property type
+                <select name="property" required>
+                  <option value="">Select a type</option>
+                  <option>Single-story home</option>
+                  <option>Two-story home</option>
+                  <option>Townhome or duplex</option>
+                  <option>Small business or storefront</option>
+                </select><span class="msg"></span>
+              </label>
+              <label>Service
+                <select name="service" required>
+                  <option value="">Select a service</option>
+                  <option>Driveway and walkways</option>
+                  <option>House soft wash</option>
+                  <option>Full exterior</option>
+                  <option>Something else</option>
+                </select><span class="msg"></span>
+              </label>
+              <label>Preferred date<input name="date" type="date" required><span class="msg"></span></label>
+              <label>ZIP code<input name="zip" inputmode="numeric" autocomplete="postal-code" maxlength="5" required><span class="msg"></span></label>
+              <label class="full">Anything else we should know? (optional)<textarea name="notes" placeholder="Approximate square footage, stains, gate code, add-ons"></textarea></label>
+            </div>
+          </fieldset>
+          <button class="btn" type="submit">Send quote request</button>
+          <p class="small">We only use these details to prepare your quote.</p>
+        </form>
+
+        <div class="done" id="done" hidden tabindex="-1">
+          <h3>Thanks. Your request is in.</h3>
+          <p>We will reply with your quote shortly. Here is what you sent:</p>
+          <dl id="summary"></dl>
+          <button class="btn ghost" type="button" id="again">Send another request</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Bluewave Pressure Washing. Demonstration site with placeholder branding.</span>
+    <span><a href="#quote">Get a quote</a> · <a href="#services">Services</a></span>
+  </div>
+</footer>
+
+<script>
+  // Set this to the client's form endpoint to deliver requests. Left empty, the
+  // form runs in demo mode: it validates and shows the confirmation, and sends
+  // nothing anywhere.
+  const FORM_ENDPOINT = "";
+
+  const form = document.getElementById("quote-form");
+  const done = document.getElementById("done");
+  const summary = document.getElementById("summary");
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  const today = new Date();
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+  form.elements.date.min = today.toISOString().slice(0, 10);
+
+  document.querySelectorAll("[data-service]").forEach((link) => {
+    link.addEventListener("click", () => { form.elements.service.value = link.dataset.service; });
+  });
+
+  const rules = {
+    name: (v) => v.trim().length >= 2 || "Please enter your name.",
+    phone: (v) => v.replace(/\D/g, "").length >= 7 || "Please enter a phone number we can reach you on.",
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || "Please enter a valid email address.",
+    property: (v) => v !== "" || "Please choose a property type.",
+    service: (v) => v !== "" || "Please choose a service.",
+    date: (v) => (v !== "" && v >= form.elements.date.min) || "Please choose a date from today onwards.",
+    zip: (v) => /^\d{5}$/.test(v.trim()) || "Please enter a 5-digit ZIP code.",
+  };
+
+  function check(field) {
+    const rule = rules[field.name];
+    if (!rule) return true;
+    const result = rule(field.value);
+    const label = field.closest("label");
+    label.classList.toggle("bad", result !== true);
+    label.querySelector(".msg").textContent = result === true ? "" : result;
+    field.setAttribute("aria-invalid", result === true ? "false" : "true");
+    return result === true;
+  }
+
+  form.addEventListener("focusout", (e) => { if (e.target.name) check(e.target); });
+  form.addEventListener("input", (e) => {
+    if (e.target.closest("label")?.classList.contains("bad")) check(e.target);
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const failed = [...form.elements].filter((f) => rules[f.name]).filter((f) => !check(f));
+    if (failed.length) { failed[0].focus(); return; }
+
+    const data = Object.fromEntries(new FormData(form));
+    const button = form.querySelector("button[type=submit]");
+
+    if (FORM_ENDPOINT) {
+      button.disabled = true;
+      button.textContent = "Sending…";
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error(res.status);
+      } catch (err) {
+        button.disabled = false;
+        button.textContent = "Send quote request";
+        form.querySelector(".small").textContent = "Sorry, that did not send. Please try again or call us.";
+        return;
+      }
+      button.disabled = false;
+      button.textContent = "Send quote request";
+    }
+
+    const rows = [
+      ["Name", data.name], ["Phone", data.phone], ["Email", data.email],
+      ["Property", data.property], ["Service", data.service],
+      ["Date", data.date], ["ZIP", data.zip],
+    ];
+    if (data.notes.trim()) rows.push(["Notes", data.notes.trim()]);
+    summary.replaceChildren(...rows.flatMap(([k, v]) => {
+      const dt = document.createElement("dt"); dt.textContent = k;
+      const dd = document.createElement("dd"); dd.textContent = v;
+      return [dt, dd];
+    }));
+    form.hidden = true;
+    done.hidden = false;
+    done.focus();
+  });
+
+  document.getElementById("again").addEventListener("click", () => {
+    form.reset();
+    done.hidden = true;
+    form.hidden = false;
+    form.elements.name.focus();
+  });
+</script>
+</body>
+</html>
