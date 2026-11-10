@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Meridian Chauffeur | Premium Limo Rideshare</title>
+<meta name="description" content="Premium limo rideshare: airport and hotel transfers, hourly chauffeur service, and special event and group travel. Request a quote in under a minute.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #0d0f12;
+    --panel: #15181d;
+    --panel-2: #1b1f26;
+    --line: #2a2f38;
+    --text: #e9e6df;
+    --muted: #a39f95;
+    --gold: #c9a55c;
+    --gold-soft: #e2c88f;
+    --error: #e58a7b;
+    --serif: "Cormorant Garamond", Georgia, serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--ink);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: inherit; text-decoration: none; }
+  .wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+  h1, h2, h3 { font-family: var(--serif); font-weight: 500; line-height: 1.12; margin: 0; letter-spacing: 0.01em; }
+  h1 { font-size: clamp(2.6rem, 6.4vw, 4.6rem); }
+  h2 { font-size: clamp(2rem, 4vw, 2.9rem); }
+  h3 { font-size: 1.6rem; }
+  p { margin: 0; }
+  .eyebrow {
+    font-size: 0.74rem; letter-spacing: 0.28em; text-transform: uppercase;
+    color: var(--gold); font-weight: 600;
+  }
+  .lede { color: var(--muted); font-size: 1.08rem; max-width: 56ch; }
+
+  /* Header */
+  header {
+    position: sticky; top: 0; z-index: 20;
+    background: rgba(13, 15, 18, 0.86);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .bar { display: flex; align-items: center; justify-content: space-between; height: 68px; gap: 20px; }
+  .brand { display: flex; align-items: center; gap: 12px; font-family: var(--serif); font-size: 1.45rem; letter-spacing: 0.06em; }
+  .brand svg { width: 30px; height: 30px; }
+  nav { display: flex; align-items: center; gap: 28px; font-size: 0.9rem; color: var(--muted); }
+  nav a:hover { color: var(--text); }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    padding: 13px 26px; border-radius: 2px; cursor: pointer;
+    font: 600 0.82rem/1 var(--sans); letter-spacing: 0.16em; text-transform: uppercase;
+    background: var(--gold); color: #17130a; border: 1px solid var(--gold);
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn:hover { background: var(--gold-soft); border-color: var(--gold-soft); }
+  .btn.ghost { background: transparent; color: var(--text); border-color: #4a4f59; }
+  .btn.ghost:hover { border-color: var(--gold); color: var(--gold-soft); }
+  nav .btn { padding: 10px 18px; color: #17130a; }
+  @media (max-width: 760px) { nav a:not(.btn) { display: none; } }
+
+  /* Hero */
+  .hero {
+    position: relative; overflow: hidden;
+    padding: clamp(72px, 12vw, 150px) 0 clamp(64px, 9vw, 110px);
+    background:
+      radial-gradient(900px 420px at 82% 8%, rgba(201, 165, 92, 0.16), transparent 62%),
+      linear-gradient(180deg, #11141a 0%, var(--ink) 100%);
+  }
+  .hero h1 em { font-style: italic; color: var(--gold-soft); }
+  .hero .lede { margin-top: 22px; }
+  .cta { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 36px; }
+  .car { position: absolute; right: -40px; bottom: 0; width: min(760px, 78vw); opacity: 0.5; pointer-events: none; }
+  .hero .wrap { position: relative; z-index: 1; }
+  .facts {
+    display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0;
+    margin-top: clamp(48px, 7vw, 84px); border-top: 1px solid var(--line);
+  }
+  .facts div { padding: 22px 20px 0 0; }
+  .facts strong { display: block; font-family: var(--serif); font-size: 1.9rem; font-weight: 500; color: var(--gold-soft); }
+  .facts span { color: var(--muted); font-size: 0.9rem; }
+  @media (max-width: 620px) { .facts { grid-template-columns: 1fr; } .car { opacity: 0.22; } }
+
+  section { padding: clamp(64px, 9vw, 112px) 0; }
+  .head { display: grid; gap: 16px; margin-bottom: clamp(36px, 5vw, 56px); }
+
+  /* Services */
+  .services { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .card {
+    background: var(--panel); border: 1px solid var(--line); padding: 34px 30px 30px;
+    display: flex; flex-direction: column; gap: 14px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .card:hover { border-color: var(--gold); transform: translateY(-3px); }
+  .card svg { width: 38px; height: 38px; stroke: var(--gold); fill: none; stroke-width: 1.4; }
+  .card p { color: var(--muted); font-size: 0.96rem; }
+  .card ul { list-style: none; padding: 0; margin: 4px 0 0; display: grid; gap: 8px; font-size: 0.92rem; }
+  .card li { padding-left: 20px; position: relative; }
+  .card li::before { content: ""; position: absolute; left: 0; top: 0.72em; width: 9px; height: 1px; background: var(--gold); }
+  .card a { margin-top: auto; padding-top: 14px; color: var(--gold-soft); font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 600; }
+  @media (max-width: 900px) { .services { grid-template-columns: 1fr; } }
+
+  /* Steps */
+  .alt { background: var(--panel); border-block: 1px solid var(--line); }
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 28px; counter-reset: step; }
+  .steps div { counter-increment: step; }
+  .steps div::before {
+    content: "0" counter(step); display: block; font-family: var(--serif); font-size: 2.3rem;
+    color: var(--gold); border-bottom: 1px solid var(--line); padding-bottom: 10px; margin-bottom: 16px;
+  }
+  .steps h3 { font-size: 1.3rem; margin-bottom: 8px; }
+  .steps p { color: var(--muted); font-size: 0.94rem; }
+  @media (max-width: 860px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .steps { grid-template-columns: 1fr; } }
+
+  /* Fleet */
+  .fleet { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+  .fleet article { border: 1px solid var(--line); padding: 26px; }
+  .fleet .spec { display: flex; gap: 18px; color: var(--muted); font-size: 0.88rem; margin-top: 10px; }
+  .fleet p { color: var(--muted); font-size: 0.94rem; margin-top: 12px; }
+  @media (max-width: 900px) { .fleet { grid-template-columns: 1fr; } }
+
+  /* Enquiry */
+  .enquiry { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(32px, 6vw, 72px); align-items: start; }
+  .enquiry aside { display: grid; gap: 20px; }
+  .assure { list-style: none; padding: 0; margin: 8px 0 0; display: grid; gap: 14px; font-size: 0.95rem; }
+  .assure li { padding-left: 26px; position: relative; color: var(--muted); }
+  .assure li::before { content: "✓"; position: absolute; left: 0; color: var(--gold); }
+  .assure b { color: var(--text); font-weight: 500; }
+  form, .done { background: var(--panel); border: 1px solid var(--line); padding: clamp(24px, 4vw, 40px); }
+  fieldset { border: 0; padding: 0; margin: 0 0 26px; }
+  legend { padding: 0; margin-bottom: 14px; font-size: 0.74rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--gold); font-weight: 600; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .full { grid-column: 1 / -1; }
+  label { display: grid; gap: 7px; font-size: 0.86rem; color: var(--muted); }
+  input, select, textarea {
+    width: 100%; padding: 13px 14px; background: var(--ink); color: var(--text);
+    border: 1px solid var(--line); border-radius: 2px; font: 400 1rem var(--sans);
+    color-scheme: dark;
+  }
+  textarea { min-height: 96px; resize: vertical; }
+  input:focus, select:focus, textarea:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(201, 165, 92, 0.18); }
+  .bad input, .bad select { border-color: var(--error); }
+  .msg { color: var(--error); font-size: 0.8rem; min-height: 1em; }
+  form .btn { width: 100%; padding: 17px; font-size: 0.86rem; }
+  .small { color: var(--muted); font-size: 0.82rem; margin-top: 14px; text-align: center; }
+  .done h3 { color: var(--gold-soft); margin-bottom: 10px; }
+  .done dl { display: grid; grid-template-columns: max-content 1fr; gap: 8px 20px; margin: 22px 0; font-size: 0.94rem; }
+  .done dt { color: var(--muted); }
+  .done dd { margin: 0; overflow-wrap: anywhere; }
+  [hidden] { display: none !important; }
+  @media (max-width: 900px) { .enquiry { grid-template-columns: 1fr; } }
+  @media (max-width: 560px) { .grid { grid-template-columns: 1fr; } }
+
+  footer { border-top: 1px solid var(--line); padding: 34px 0; color: var(--muted); font-size: 0.88rem; }
+  footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 14px; }
+  footer a:hover { color: var(--gold-soft); }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap bar">
+    <a class="brand" href="#top" aria-label="Meridian Chauffeur home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><circle cx="16" cy="16" r="14.5" fill="none" stroke="#c9a55c" stroke-width="1.2"/><path d="M9 21V11l7 7 7-7v10" fill="none" stroke="#c9a55c" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      MERIDIAN
+    </a>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#how">How it works</a>
+      <a href="#fleet">Fleet</a>
+      <a class="btn" href="#enquire">Enquire</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="hero">
+    <svg class="car" viewBox="0 0 760 220" aria-hidden="true">
+      <g fill="none" stroke="#c9a55c" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M20 168h44m112 0h352m112 0h100"/>
+        <path d="M64 168c-18-2-30-10-32-26 2-20 40-30 96-36 40-30 96-52 190-52 96 0 150 18 212 54 70 6 128 18 150 34 10 8 10 20-8 26"/>
+        <path d="M150 104c36-22 86-36 160-36 78 0 124 12 176 40"/>
+        <path d="M318 68v40m-150 0h330"/>
+        <circle cx="120" cy="168" r="34"/><circle cx="120" cy="168" r="16"/>
+        <circle cx="584" cy="168" r="34"/><circle cx="584" cy="168" r="16"/>
+      </g>
+    </svg>
+    <div class="wrap">
+      <p class="eyebrow">Premium limo rideshare</p>
+      <h1 style="margin-top:18px">Arrive unhurried.<br><em>Every single time.</em></h1>
+      <p class="lede">Chauffeured travel for airport runs, hotel transfers, nights out and group occasions. Fixed quotes, professional drivers, and a car that is waiting before you are.</p>
+      <div class="cta">
+        <a class="btn" href="#enquire">Request a quote</a>
+        <a class="btn ghost" href="#services">View services</a>
+      </div>
+      <div class="facts">
+        <div><strong>24 / 7</strong><span>Bookings and dispatch, every day of the year</span></div>
+        <div><strong>Fixed quote</strong><span>Agreed before you travel, with no surge pricing</span></div>
+        <div><strong>Flight tracked</strong><span>Pickup time adjusts if your flight is early or late</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Services</p>
+        <h2>Three ways to travel with us</h2>
+        <p class="lede">Choose the service that fits your journey. Each one includes a professional chauffeur, luggage assistance and bottled water as standard.</p>
+      </div>
+      <div class="services">
+        <article class="card">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M4 26l14-4V8a2 2 0 014 0v14l14 4v3l-14-2v6l4 3v2l-6-1.5L14 37v-2l4-3v-6L4 29z"/></svg>
+          <h3>Airport &amp; hotel transfers</h3>
+          <p>Door-to-door transfers between airports, hotels, homes and offices, timed around your flight rather than a timetable.</p>
+          <ul>
+            <li>Live flight tracking on every airport pickup</li>
+            <li>Meet and greet in the arrivals hall</li>
+            <li>Complimentary waiting time after landing</li>
+          </ul>
+          <a href="#enquire" data-service="Airport or hotel transfer">Enquire about transfers →</a>
+        </article>
+        <article class="card">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="20" cy="20" r="15"/><path d="M20 10v10l7 4"/></svg>
+          <h3>Hourly chauffeur service</h3>
+          <p>A car and chauffeur at your disposal for as long as you need: meetings across town, shopping, dinner, or a day of appointments.</p>
+          <ul>
+            <li>Booked by the hour, with as many stops as you like</li>
+            <li>Your chauffeur waits at each stop</li>
+            <li>Change the route on the day without rebooking</li>
+          </ul>
+          <a href="#enquire" data-service="Hourly chauffeur service">Enquire about hourly hire →</a>
+        </article>
+        <article class="card">
+          <svg viewBox="0 0 40 40" aria-hidden="true"><circle cx="14" cy="14" r="5"/><circle cx="28" cy="15" r="4"/><path d="M4 33c0-6 4.5-10 10-10s10 4 10 10M25 23.5c5-1 11 2 11 9.5"/></svg>
+          <h3>Special events &amp; group travel</h3>
+          <p>Weddings, proms, concerts, corporate days and celebrations, with vehicles sized for couples through to larger parties.</p>
+          <ul>
+            <li>Stretch limousines, SUVs and executive vans</li>
+            <li>Multiple pickups coordinated on one booking</li>
+            <li>Decoration and refreshments on request</li>
+          </ul>
+          <a href="#enquire" data-service="Special event or group travel">Enquire about events →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="alt">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">How it works</p>
+        <h2>From enquiry to kerbside in four steps</h2>
+      </div>
+      <div class="steps">
+        <div><h3>Send your enquiry</h3><p>Tell us where, when and how many. The form takes under a minute.</p></div>
+        <div><h3>Receive a fixed quote</h3><p>We reply with an all-inclusive price and the vehicle we recommend.</p></div>
+        <div><h3>Confirm your booking</h3><p>Approve the quote and you receive a written confirmation straight away.</p></div>
+        <div><h3>Meet your chauffeur</h3><p>Driver and vehicle details arrive ahead of pickup, and the car is there early.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="fleet">
+    <div class="wrap">
+      <div class="head">
+        <p class="eyebrow">Fleet</p>
+        <h2>A vehicle for every party size</h2>
+      </div>
+      <div class="fleet">
+        <article><h3>Executive sedan</h3><div class="spec"><span>Up to 3 passengers</span><span>3 bags</span></div><p>Quiet and discreet. Ideal for airport runs and business travel.</p></article>
+        <article><h3>Luxury SUV</h3><div class="spec"><span>Up to 6 passengers</span><span>6 bags</span></div><p>Extra room for families, colleagues and heavier luggage.</p></article>
+        <article><h3>Stretch limousine</h3><div class="spec"><span>Up to 10 passengers</span><span>4 bags</span></div><p>The centrepiece for weddings, proms and milestone celebrations.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="enquire" class="alt">
+    <div class="wrap enquiry">
+      <aside>
+        <p class="eyebrow">Enquire</p>
+        <h2>Request your quote</h2>
+        <p class="lede">Share the details of your journey and we will reply with a fixed price. There is no obligation and no payment is taken at this stage.</p>
+        <ul class="assure">
+          <li><b>Reply within one hour</b> during business hours</li>
+          <li><b>All-inclusive pricing</b> covering tolls, fuel and waiting time</li>
+          <li><b>Free changes</b> up to 24 hours before pickup</li>
+        </ul>
+      </aside>
+
+      <div>
+        <form id="enquiry-form" novalidate>
+          <fieldset>
+            <legend>Your details</legend>
+            <div class="grid">
+              <label>Full name<input name="name" autocomplete="name" required><span class="msg"></span></label>
+              <label>Phone<input name="phone" type="tel" autocomplete="tel" inputmode="tel" required><span class="msg"></span></label>
+              <label class="full">Email<input name="email" type="email" autocomplete="email" required><span class="msg"></span></label>
+            </div>
+          </fieldset>
+          <fieldset>
+            <legend>Your journey</legend>
+            <div class="grid">
+              <label class="full">Service
+                <select name="service" required>
+                  <option value="">Select a service</option>
+                  <option>Airport or hotel transfer</option>
+                  <option>Hourly chauffeur service</option>
+                  <option>Special event or group travel</option>
+                </select><span class="msg"></span>
+              </label>
+              <label>Preferred pickup date<input name="date" type="date" required><span class="msg"></span></label>
+              <label>Pickup time (optional)<input name="time" type="time"><span class="msg"></span></label>
+              <label class="full">Pickup location<input name="pickup" placeholder="Address, airport or hotel" required><span class="msg"></span></label>
+              <label class="full">Drop-off location<input name="dropoff" placeholder="Address, airport or hotel" required><span class="msg"></span></label>
+              <label>Passengers<input name="passengers" type="number" min="1" max="30" inputmode="numeric" required><span class="msg"></span></label>
+              <label>Pieces of luggage<input name="luggage" type="number" min="0" max="40" inputmode="numeric" required><span class="msg"></span></label>
+              <label class="full">Anything else we should know? (optional)<textarea name="notes" placeholder="Flight number, child seats, extra stops, occasion"></textarea></label>
+            </div>
+          </fieldset>
+          <button class="btn" type="submit">Send enquiry</button>
+          <p class="small">We only use these details to prepare your quote.</p>
+        </form>
+
+        <div class="done" id="done" hidden tabindex="-1">
+          <h3>Thank you. Your enquiry is in.</h3>
+          <p>We will reply with a fixed quote shortly. Here is what you sent:</p>
+          <dl id="summary"></dl>
+          <button class="btn ghost" type="button" id="again">Send another enquiry</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© <span id="year"></span> Meridian Chauffeur. Demonstration site with placeholder branding.</span>
+    <span><a href="#enquire">Request a quote</a> · <a href="#services">Services</a> · <a href="#fleet">Fleet</a></span>
+  </div>
+</footer>
+
+<script>
+  // Set this to the client's form endpoint (their own server, or a form-to-email
+  // service) to deliver enquiries. Left empty, the form runs in demo mode: it
+  // validates and shows the confirmation, and sends nothing anywhere.
+  const FORM_ENDPOINT = "";
+
+  const form = document.getElementById("enquiry-form");
+  const done = document.getElementById("done");
+  const summary = document.getElementById("summary");
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  // Pickup date cannot be in the past.
+  const today = new Date();
+  today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+  form.elements.date.min = today.toISOString().slice(0, 10);
+
+  // "Enquire about ..." links on the service cards pre-select the service.
+  document.querySelectorAll("[data-service]").forEach((link) => {
+    link.addEventListener("click", () => { form.elements.service.value = link.dataset.service; });
+  });
+
+  const rules = {
+    name: (v) => v.trim().length >= 2 || "Please enter your name.",
+    phone: (v) => v.replace(/\D/g, "").length >= 7 || "Please enter a phone number we can reach you on.",
+    email: (v) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) || "Please enter a valid email address.",
+    service: (v) => v !== "" || "Please choose a service.",
+    date: (v) => (v !== "" && v >= form.elements.date.min) || "Please choose a pickup date from today onwards.",
+    pickup: (v) => v.trim().length >= 3 || "Please tell us where to collect you.",
+    dropoff: (v) => v.trim().length >= 3 || "Please tell us where you are going.",
+    passengers: (v) => (Number.isInteger(+v) && +v >= 1 && +v <= 30) || "Enter a number of passengers from 1 to 30.",
+    luggage: (v) => (v !== "" && Number.isInteger(+v) && +v >= 0 && +v <= 40) || "Enter pieces of luggage (0 if none).",
+  };
+
+  function check(field) {
+    const rule = rules[field.name];
+    if (!rule) return true;
+    const result = rule(field.value);
+    const label = field.closest("label");
+    label.classList.toggle("bad", result !== true);
+    label.querySelector(".msg").textContent = result === true ? "" : result;
+    field.setAttribute("aria-invalid", result === true ? "false" : "true");
+    return result === true;
+  }
+
+  form.addEventListener("focusout", (e) => { if (e.target.name) check(e.target); });
+  form.addEventListener("input", (e) => {
+    if (e.target.closest("label")?.classList.contains("bad")) check(e.target);
+  });
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const fields = [...form.elements].filter((f) => rules[f.name]);
+    const failed = fields.filter((f) => !check(f));
+    if (failed.length) { failed[0].focus(); return; }
+
+    const data = Object.fromEntries(new FormData(form));
+    const button = form.querySelector("button[type=submit]");
+
+    if (FORM_ENDPOINT) {
+      button.disabled = true;
+      button.textContent = "Sending…";
+      try {
+        const res = await fetch(FORM_ENDPOINT, {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(data),
+        });
+        if (!res.ok) throw new Error(res.status);
+      } catch (err) {
+        button.disabled = false;
+        button.textContent = "Send enquiry";
+        form.querySelector(".small").textContent = "Sorry, that did not send. Please try again or call us.";
+        return;
+      }
+      button.disabled = false;
+      button.textContent = "Send enquiry";
+    }
+
+    const rows = [
+      ["Name", data.name], ["Phone", data.phone], ["Email", data.email],
+      ["Service", data.service],
+      ["Pickup", data.date + (data.time ? " at " + data.time : "")],
+      ["From", data.pickup], ["To", data.dropoff],
+      ["Passengers", data.passengers], ["Luggage", data.luggage],
+    ];
+    if (data.notes.trim()) rows.push(["Notes", data.notes.trim()]);
+    summary.replaceChildren(...rows.flatMap(([k, v]) => {
+      const dt = document.createElement("dt"); dt.textContent = k;
+      const dd = document.createElement("dd"); dd.textContent = v;
+      return [dt, dd];
+    }));
+    form.hidden = true;
+    done.hidden = false;
+    done.focus();
+  });
+
+  document.getElementById("again").addEventListener("click", () => {
+    form.reset();
+    done.hidden = true;
+    form.hidden = false;
+    form.elements.name.focus();
+  });
+</script>
+</body>
+</html>
